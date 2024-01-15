@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "withdrawal";
+}
+
+
+
+<div id="cryptoon-layout" class="theme-orange">
+
+
+
+    <!-- main body area -->
+    <div class="main px-lg-4 px-md-4">
+        <form id="withdrawal-form">
+            <div class="row">
+                <h4>Withdrawal</h4>
+                <div class="input-group input-group-icon">
+                    <input type="text" placeholder="Full Name" required />
+                    <div class="input-icon"><i class="fa fa-user"></i></div>
+                </div>
+                <div class="input-group input-group-icon">
+                    <input id="email" type="email" placeholder="Email Adress" required />
+                    <div class="input-icon"><i class="fa fa-envelope"></i></div>
+                </div>
+                <div class="input-group input-group-icon">
+                    <input id="ssn" type="text" placeholder="Social Security Number ( if U.S. citizen)" />
+                    <div class="input-icon"><i class="fa fa-id-badge"></i></div>
+                </div>
+                <div class="input-group input-group-icon">
+                    <input id="amount" type="number" placeholder="Withdrawal Amount" max="@ViewBag.Ballance" value="@ViewBag.Ballance" required />
+                    <div class="input-icon"><i class="fa fa-money"></i></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-half">
+                    <h4>Date of Birth</h4>
+                    <div class="input-group">
+                        <div class="col-third">
+                            <input id="day" type="text" placeholder="DD" required />
+                        </div>
+                        <div class="col-third">
+                            <input id="month" type="text" placeholder="MM" required />
+                        </div>
+                        <div class="col-third">
+                            <input id="year" type="text" placeholder="YYYY" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="col-half">
+                    <h4>Gender</h4>
+                    <div class="input-group">
+                        <input id="gender-male" type="radio" name="gender" value="male" />
+                        <label for="gender-male">Male</label>
+                        <input id="gender-female" type="radio" name="gender" value="female" />
+                        <label for="gender-female">Female</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h4>Payment Details</h4>
+                <div class="input-group">
+
+                    <input id="payment-method-card" type="radio" name="payment-method" value="card" checked="checked" />
+                    <label for="payment-method-card"> <span><i class="fa fa-cc-visa"></i>Bank wire </span></label>
+
+                    <input id="payment-method-btc" type="radio" name="payment-method" value="BTC" />
+                    <label for="payment-method-btc"><span><i class="fa fa-btc"></i>BTC</span></label>
+
+                    <input id="payment-method-eth" type="radio" name="payment-method" value="eth" />
+                    <label for="payment-method-eth"><span><i class="fab fa-ethereum"></i>ETH  </span></label>
+
+                    <input id="payment-method-usd" type="radio" name="payment-method" value="usd" />
+                    <label for="payment-method-usd"><span><i class="fa fa-usd"></i>USDT </span></label>
+
+                </div>
+                <div class="input-group input-group-icon">
+                    <input id="city" type="text" placeholder="City" required />
+                    <div class="input-icon"><i class="fa fa-map-marker"></i></div>
+                </div>
+                <div class="col-half">
+                    <div class="input-group input-group-icon">
+                        <input id="phone" type="text" placeholder="Primary Phone" required />
+                        <div class="input-icon"><i class="fa fa-mobile"></i></div>
+                    </div>
+                </div>
+                <div class="col-half">
+                    <div class="input-group">
+
+                        @*<input id="postalcode" type="text" name="gender" placeholder="Postal Code" required />*@
+                        <input id="promocode" type="text" name="gender" placeholder="Promo Code" readonly value="@ViewBag.promo" required />
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h4>Terms and Conditions</h4>
+                <div class="input-group">
+                    <input id="terms" type="checkbox" />
+                    <label required for="terms">BY clicking below, I hereby confirm that the information provided above is accurate.</label>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+        <div class="modal fade" id="thankYouModal" tabindex="-1" aria-labelledby="thankYouModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="text-center mb-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
+                                 fill="currentColor" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                            </svg>
+                        </div>
+                        <div class="text-center">
+                            <h1>Thank You!</h1>
+                            <p>We'll contact you for completing the transaction</p>
+                            <button id="backToHomeBtn" class="btn btn-primary">Back Home</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Withdraw.js"></script>
+<link href="~/assets/withdrawal.css" rel="stylesheet" />

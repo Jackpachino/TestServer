@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Forex_Update.Models.Withdrawal>
+@{
+    ViewBag.Title = "Withdrawal";
+}
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Amount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UseEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SSN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PromoCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)$
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UseEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SSN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentMethod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PromoCode)
+            </td>
+            <td>
+                @if (item.Status == 0)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color:yellow; color:black" class="badge badge-pill badge-warning">Pending</span>
+                }
+                else if (item.Status == 1)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: green; color: black " class="badge badge-pill badge-success">Approved</span>
+                }
+                else if (item.Status == 2)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: red; color: black" class="badge badge-pill badge-danger">Rejected</span>
+                }
+            </td>
+
+        </tr>
+    }
+
+
+</table>

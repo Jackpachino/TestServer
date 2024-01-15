@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="main px-lg-4 px-md-4">
+
+    <!-- Body: Titel Header -->
+    <div class="body-header border-bottom d-flex py-3">
+        <div class="container-xxl">
+            <div class="row align-items-center g-2">
+                <div class="col">
+                    <!-- Pretitle -->
+                    <h1 class="h4 mt-1">Crypro trade</h1>
+                </div>
+            </div> <!-- Row end  -->
+        </div>
+    </div>
+
+    <!-- Body: Body -->
+    <div class="body d-flex py-3">
+        <div class="container-xxl">
+
+            <div class="row g-3 mb-3">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <!-- TradingView Widget BEGIN -->
+                            <div class="tradingview-widget-container">
+                                <div id="tradingview_e05b7" style="height: 610px;">
+                                    <div class="tradingview-widget-container">
+                                        <div id="tradingview_3500c"></div>
+                                        <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank"><span class="blue-text">Track all markets on TradingView</span></a></div>
+                                        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                                        <script type="text/javascript">
+                                         new TradingView.widget(
+                                             {
+                                                 "width": 1500,
+                                                 "height": 600,
+                                                 "symbol": "BINANCEUS:@ViewBag.Crypto",
+                                                 "interval": "1",
+                                                 "timezone": "Etc/UTC",
+                                                 "theme": "light",
+                                                 "style": "1",
+                                                 "locale": "en",
+                                                 "enable_publishing": false,
+                                                 "hide_top_toolbar": true,
+                                                 "hide_legend": true,
+                                                 "hide_side_toolbar": false,
+                                                 "details": true,
+                                                 "hide_volume": true,
+                                                 "container_id": "tradingview_3500c"
+                                             }
+                                         );
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- Row End -->
+
+            <div class="row g-3 mb-3">
+                <div class="col-xxl-5">
+                    <div class="card">
+                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                            <h6 class="mb-0 fw-bold ">Entire Crypto Trading History</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="tab-content">
+
+
+                                <table id="tradingTable" class="priceTable table table-hover custom-table-2 table-bordered align-middle mb-0" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Crypto</th>
+                                            <th>Side</th>
+                                            <th>OpenPrice</th>
+                                            <th>Total Payed</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                                <div>
+                                    <label for="pageSizeTrading">Items per page (Trading):</label>
+                                    <select id="pageSizeTrading">
+                                        <option value="15">15</option>
+                                        <option value="30">30</option>
+                                        <option value="45">45</option>
+                                    </select>
+                                    <button class="btn btn-primary btn-sm" onclick="fetchTradingData(1)">Refresh Entire Crypto Trading Table</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-xxl-7">
+                    <div class="card mb-3">
+                        <div class="card-header py-3 d-flex justify-content-between bg-transparent border-bottom-0">
+                            <h6 class="mb-0 fw-bold ">BUY/SELL On @ViewBag.ccr</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="tab-content">
+
+                                <div class="tab-pane fade show active" id="Limit">
+                                    <div class="row g-3">
+                                        <div class="col-lg-6">
+                                            <div class="d-flex align-items-center justify-content-between my-3">
+                                                <span class="small text-muted">Ballance</span>
+                                                <span id="getballance" class=""></span>
+                                            </div>
+                                            <form id="buyoption">
+                                                <h2 class="form-label" value="@ViewBag.ccr" readonly></h2>
+                                                <input style="display:none" id="stockSelect" value="@ViewBag.ccr"></input>
+
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">VOLUME</span>
+                                                    <input type="number" class="form-control" id="quantity" required step="0.0001" min="0.0001">
+                                                    <br />
+                                                    <input type="number" class="form-control" id="totalamount" readonly>
+                                                    <span class="input-group-text">PRICE </span>
+                                                    <div style="display:none" id="stock-price"></div>
+                                                </div>
+                                                <button type="submit" id="buybtn" class="btn flex-fill btn-light-success py-2 fs-5 text-uppercase px-5 w-100">BUY @ViewBag.ccr</button>
+
+                                            </form>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            @*<div class="d-flex align-items-center justify-content-between my-3">
+                                                <span class="small text-muted">Avbl</span>
+                                                <span class="">0.0000000 BTC</span>
+                                            </div>*@
+                                            <form id="sellform" style="margin-top: 54px !important;" >
+
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text">VOLUME</span>
+                                                    <input type="number" class="form-control" id="getTotalvolume">
+                                                    <br />
+                                                    <input type="number" class="form-control" id="caclulateTotal" readonly>
+                                                    <span class="input-group-text">PRICE </span>
+                                                    <div style="display:none" id="stock-price"></div>
+                                                </div>
+                                                <button id="sellbtn" type="submit" class="btn flex-fill btn-light-danger py-2 fs-5 text-uppercase px-5 w-100">SELL @ViewBag.ccr</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div><!-- Limit Tab End -->
+
+                             
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="tab-content">
+
+
+                            <table id="cryptoTable" class="priceTable table table-hover custom-table-2 table-bordered align-middle mb-0" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Crypto</th>
+                                        <th>Side</th>
+                                        <th>OpenPrice</th>
+                                        <th>Total Payed</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                            <div class="container">
+                                <label for="pageSize">Per page:</label>
+                                <select id="pageSize">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+                                <button class="btn btn-primary btn-sm" onclick="fetchData(1)">Refresh @ViewBag.Crypto Table</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div><!-- Row End -->
+
+        </div>
+   
+    
+    <div id="toast" class="toast-container"></div>
+    <div id="toast2" class="toast-container2"></div>
+    <div id="toast3" class="toast-container3"></div>
+    <div id="toast4" class="toast-container4"></div>
+    <div id="sellApproved" class="toast-sellApproved"></div>
+    <div id="sellDeclined" class="toast-sellDeclined"></div>
+
+</div>
+
+<script defer src="~/Scripts/buycripto.js"></script>
+<script defer src="~/Scripts/updateballance.js"></script>
+
+

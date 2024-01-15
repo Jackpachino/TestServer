@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Forex_Update.Models.Request>
+@{
+    ViewBag.Title = "Deposit";
+}
+
+<h4>Deposit</h4>
+
+<table class="table">
+    <tr>
+        @*<th>
+                @Html.DisplayNameFor(model => model.UserID)
+            </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.DepositAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserPhone)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.RequestDate)
+        </th>
+        <th>
+            DepositAmount in BTC
+        </th>
+        <th>
+            Status
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositAmount)$
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositAmountBTC)
+            </td>
+            <td>
+                @if (item.Status == 0)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color:yellow; color:black" class="badge badge-pill badge-warning">Pending</span>
+                }
+                else if (item.Status == 1)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: green; color: black " class="badge badge-pill badge-success">Approved</span>
+                }
+                else if (item.Status == 2)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: red; color: black" class="badge badge-pill badge-danger">Rejected</span>
+                }
+            </td>
+
+        </tr>
+    }
+    
+
+</table>

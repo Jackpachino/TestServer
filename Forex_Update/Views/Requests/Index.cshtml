@@ -1,0 +1,102 @@
+﻿@model IPagedList<Forex_Update.Models.Request>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<p>
+    @using (Html.BeginForm("Index", "Requests", FormMethod.Get))
+    {
+        <div class="form-group">
+            <input type="text" name="search" value="@Request.QueryString["search"]" class="" placeholder="" />
+            <button type="submit">search</button>
+        </div>
+
+    }
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DepositAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserPhone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserBTCWallet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().RequestDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DepositAmountBTC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Status)
+        </th>
+
+        <th>
+            Action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserBTCWallet)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepositAmountBTC)
+            </td>
+            <td>
+                @if (item.Status == 0)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color:yellow; color:black" class="badge badge-pill badge-warning">Pending</span>
+                }
+                else if (item.Status == 1)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: green; color: black " class="badge badge-pill badge-success">Approved</span>
+                }
+                else if (item.Status == 2)
+                {
+                    <span style="font-size: 108% !important; font-weight: 500 !important; background-color: red; color: black" class="badge badge-pill badge-danger">Rejected</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

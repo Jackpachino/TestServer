@@ -1,0 +1,240 @@
+﻿@model Forex_Update.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>AspNetUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PasswordHash)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SecurityStamp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SecurityStamp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumberConfirmed)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TwoFactorEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LockoutEndDateUtc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LockoutEnabled)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AccessFailedCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AccessFailedCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserBallance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserBallance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentStockSymbol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentStockSymbol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentCryptoSymbol)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentCryptoSymbol)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Equity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Equity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MoneyInStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MoneyInStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalProfit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalProfit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Chart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Chart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Refresh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Refresh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Promocode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promocode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Currency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.showpassword)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.showpassword)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Btcwallet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Btcwallet)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastLoginTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastLoginTime)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,83 @@
+﻿@model IPagedList<Forex_Update.Models.PromocodeUserViewModel>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "Promocodes", FormMethod.Get))
+{
+    <div class="form-group">
+        <input type="text" name="search" value="@Request.QueryString["search"]" class="" />
+        <button type="submit" class="btn btn-secondary">Filter</button>
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox" name="showInactiveNoUser" value="true" @(Request.QueryString["showInactiveNoUser"] == "true" ? "checked" : "")> Promocodes Without User
+        </label>
+    </div>
+  
+
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().PromocodeStr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BtcWallet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().UserId)
+        </th>
+
+        <th>UserName</th>
+
+        <th>
+            Used
+        </th>
+        <th>
+            action
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.PromocodeStr)</td>
+
+
+            <td>@Html.DisplayFor(modelItem => item.BtcWallet)</td>
+
+            <td>@Html.DisplayFor(modelItem => item.UserId)</td>
+            <!-- Other fields as needed -->
+
+            <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+
+            <td>
+                @if (item.Active == true)
+                {
+                    <span>&#10004;</span> <!-- This is a Unicode checkmark -->
+                }
+                else
+                {
+                    <span>&#10006;</span> <!-- This is a Unicode cross mark, you can leave this empty if you prefer -->
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, search = Request.QueryString["search"] }))

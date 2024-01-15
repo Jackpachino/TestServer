@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Forex_Update.Models.Trading>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Trading History</h4>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Openprice)
+        </th>
+   
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Symbol)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SharePart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPayedAmount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BuyTime)
+        </th>
+        <th>
+            Asset Type
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Openprice)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Symbol)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SharePart)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPayedAmount)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.BuyTime)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Obj)
+        </td>
+        @*@if (User.IsInRole("ROLE_ADMIN"){ 
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        }*@
+    </tr>
+}
+
+</table>
